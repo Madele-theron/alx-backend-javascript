@@ -1,1 +1,1 @@
-# 0x00. ES6 Basics
+# ALX Backend JS - Short Specializations
