@@ -7,20 +7,11 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
 
   return Promise.allSettled([userPromise, photoPromise])
     .then((results) => {
-      const output = [];
       for (const result in results) {
-        if (result === 'fulfilled') {
-          output.push({
-            status: 'fulfilled',
-            value: result.value,
-          });
-        } else {
-          output.push({
-            status: 'rejected',
-            value: result.reason ? result.reason.toString() : 'Unknown error',
-          });
+        if (result.reason !== undefined) {
+          result.value = result.reason.toString();
+          delete result.reason;
         }
       }
-      return output;
     });
 }
