@@ -8,7 +8,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([userResponse, photoResponse]).then((results) => {
     for (const result in results) {
       if (result.reason !== undefined) {
-        result.value = result.reason.toString();
+        result.valueOf = result.reason.toString();
         delete result.reason;
       }
     }
