@@ -17,16 +17,18 @@ const student2: Student = {
     lastName: "Willemse",
     age: 34,
     location: "Cape Town"
-}
-const studentsList: Student[] = [student1, student2];
+};
+
+const studentsList: Array<Student> = [student1, student2];
 
 const table: HTMLTableElement = document.createElement("table");
 
 studentsList.forEach((student: Student) => {
     const row: HTMLTableRowElement = table.insertRow();
     const nameCell: HTMLTableCellElement = row.insertCell();
-    nameCell.textContent = student.firstName;
     const locationCell: HTMLTableCellElement = row.insertCell();
+    
+    nameCell.textContent = student.firstName;
     locationCell.textContent = student.location;
 })
 
