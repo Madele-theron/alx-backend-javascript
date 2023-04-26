@@ -64,3 +64,12 @@ export function executeWork(employee: TeacherInterface | DirectorInterface): str
     return taskmsg;
 }
 
+type Subjects = "Math" | "History" 
+
+export function teachClass(todayClass: string) {
+    if (todayClass === "Math") {
+        return "Teaching Math";
+    } else if (todayClass === "History") {
+        return "Teaching History";
+    }
+}
