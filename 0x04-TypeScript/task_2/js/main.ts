@@ -47,3 +47,20 @@ export function createEmployee(salary: number | string): Teacher | Director {
     }
     return new Director();
 }
+
+export function isDirector(employee: TeacherInterface | DirectorInterface): employee is Director {
+    return employee instanceof Director;
+}
+
+export function executeWork(employee: TeacherInterface | DirectorInterface): string {
+    let taskmsg;
+
+    if (isDirector(employee)) {
+        taskmsg = employee.workDirectorTasks();
+    } else {
+        taskmsg = employee.workTeacherTasks();
+    }
+    console.log(taskmsg);
+    return taskmsg;
+}
+
