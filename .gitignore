@@ -7333,8 +7333,8 @@
 0x03-ES6_data_manipulation/0-get_list_students.js
 package-lock.json
 package.json
-node_modules/.package-lock.json
 node_modules/@babel/plugin-syntax-bigint/LICENSE
+node_modules/.package-lock.json
 node_modules/@babel/plugin-syntax-bigint/README.md
 node_modules/@babel/plugin-syntax-bigint/lib/index.js
 node_modules/@babel/plugin-syntax-import-meta/LICENSE
@@ -7816,5 +7816,7 @@ node_modules/babel-preset-jest/index.js
 node_modules/babel-preset-jest/LICENSE
 node_modules/babel-preset-jest/package.json
 node_modules/babel-preset-jest/README.md
-package-lock.json
-package.json
+**package-lock.json
+**main.js
+**package.json
+**node_modules
