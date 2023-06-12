@@ -1,5 +1,5 @@
-function displayMessage(arguments) {
-    this._stdout.write(util.format.apply(this, arguments) + '\n');
+const displayMessage = (param) => {
+    console.log(param);
 }
 
 module.exports = displayMessage;
