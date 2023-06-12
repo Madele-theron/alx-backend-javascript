@@ -7332,7 +7332,6 @@
 # node_modules/yallist/yallist.js
 0x03-ES6_data_manipulation/0-get_list_students.js
 package-lock.json
-package.json
 node_modules/@babel/plugin-syntax-bigint/LICENSE
 node_modules/.package-lock.json
 node_modules/@babel/plugin-syntax-bigint/README.md
@@ -7818,6 +7817,5 @@ node_modules/babel-preset-jest/package.json
 node_modules/babel-preset-jest/README.md
 **package-lock.json
 **main.js
-**package.json
 **node_modules
 **delete.js
