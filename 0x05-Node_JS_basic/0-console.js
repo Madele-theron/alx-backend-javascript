@@ -1,5 +1,5 @@
 /**
- * Display a message to STDOUT.
+ * Display message to STDOUT.
  * @param {String} param message to STDOUT.
  */
 const displayMessage = (param) => {
