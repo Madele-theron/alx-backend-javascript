@@ -15,7 +15,7 @@ describe('calculateNumber type == SUM', () => {
 
 describe('calculateNumber type == SUBTRACT', () => {
     it('checks neg & pos', () => {
-        assert.strictEqual(calculateNumber('SUBTRACT', -1.4, -3.6), 3);
+        assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 4.5), -4);
         assert.strictEqual(calculateNumber('SUBTRACT', 1.9, 0), 2);
         assert.strictEqual(calculateNumber('SUBTRACT', -1, -3), 2);
         assert.strictEqual(calculateNumber('SUBTRACT', 6.1, 6.1), 0);
@@ -26,7 +26,7 @@ describe('calculateNumber type == SUBTRACT', () => {
 
 describe('calculateNumber type == DIVIDE', () => {
 it('checks neg & pos', () => {
-    assert.strictEqual(calculateNumber('DIVIDE', -1, 1), -1);
-    assert.strictEqual(calculateNumber('DIVIDE', 4, 0), 'Error');
+    assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
+    assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
 });
 });
