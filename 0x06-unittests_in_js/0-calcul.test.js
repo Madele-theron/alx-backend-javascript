@@ -10,5 +10,6 @@ describe('calculateNumber', function () {
         assert.strictEqual(calculateNumber(-1, -1), -2);
         assert.strictEqual(calculateNumber(1, -1), 0);
         assert.strictEqual(calculateNumber(1.2, 2.1), 3);
+        assert.strictEqual(isNaN(calculateNumber()), true);
     });
 });
