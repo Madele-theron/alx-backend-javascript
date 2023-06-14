@@ -1,5 +1,6 @@
 const calculateNumber = require('./2-calcul_chai')
 const { expect } = require('chai');
+const assert = require('assert').strict;
 
 describe('calculateNumber type == SUM', () => {
     it('checks neg & pos', () => {
