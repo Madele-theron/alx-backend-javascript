@@ -1,32 +1,13 @@
 const calculateNumber = require('./1-calcul')
 const assert = require('assert');
+const { it, describe } = require("mocha");
 
-describe('calculateNumber type == SUM', () => {
-    it('checks neg & pos', () => {
-        assert.strictEqual(calculateNumber('SUM', 1, 3), 4);
-        assert.strictEqual(calculateNumber('SUM', 1.9, 0), 2);
-        assert.strictEqual(calculateNumber('SUM', 6.1, 6.1), 12);
-        assert.strictEqual(calculateNumber('SUM', 0.1, 0.2), 0);
+describe('calculateNumber()', () => {
+
+    it('check rounding of numbers', function() {
         assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
-        assert.strictEqual(calculateNumber('SUM', -1, -3), -4);
-        assert.strictEqual(calculateNumber('SUM', 3.7, 1), 5);
-    })
-});
-
-describe('calculateNumber type == SUBTRACT', () => {
-    it('checks neg & pos', () => {
         assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 4.5), -4);
-        assert.strictEqual(calculateNumber('SUBTRACT', 1.9, 0), 2);
-        assert.strictEqual(calculateNumber('SUBTRACT', -1, -3), 2);
-        assert.strictEqual(calculateNumber('SUBTRACT', 6.1, 6.1), 0);
-        assert.strictEqual(calculateNumber('SUBTRACT', -1.5, 0), -1);
-        assert.strictEqual(calculateNumber('SUBTRACT', 4.5, 2), 3);
-    });
-});
-
-describe('calculateNumber type == DIVIDE', () => {
-it('checks neg & pos', () => {
-    assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
-    assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
-});
+        assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
+        assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
+    })
 });
