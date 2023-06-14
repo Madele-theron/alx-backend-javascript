@@ -5,6 +5,7 @@ const assert = require('assert');
 describe('calculateNumber()', function () {
     
     it('test with values', function () {
+        assert.strictEqual(calculateNumber(1, 2), 3)
         assert.strictEqual(calculateNumber(1, 3), 4);
         assert.strictEqual(calculateNumber(1, 3.7), 5);
         assert.strictEqual(calculateNumber(1.2, 3.7), 5);
