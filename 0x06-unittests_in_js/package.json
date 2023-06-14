@@ -4,7 +4,7 @@
     "description": "unittesting",
     "main": "0-calcul.js",
     "scripts": {
-        "test": "mocha"
+        "test": "./node_modules/mocha/bin/mocha"
     },
     "keywords": [],
     "author": "",
