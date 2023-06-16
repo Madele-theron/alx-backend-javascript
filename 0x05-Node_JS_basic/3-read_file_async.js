@@ -9,16 +9,17 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
       const fileLines = data
         .toString('utf-8')
         .split('\n');
+      console.log(fileLines)
       const GroupsObj = {};
       const FieldNames = fileLines[0].split(',');
       const PropNames = FieldNames
         .slice(0, FieldNames.length - 1);
 
       for (const line of fileLines.slice(1)) {
-        const studentRecord = line.split(','); // seperates data in the line with a comma.
+        const studentRecord = line.split(',');
         const studentPropValues = studentRecord
           .slice(0, studentRecord.length - 1);
-        const field = studentRecord[studentRecord.length - 1]; //this gets the students field in the lines.
+        const field = studentRecord[studentRecord.length - 1];
         if (!Object.keys(GroupsObj).includes(field)) {
           GroupsObj[field] = [];
         }
@@ -31,7 +32,7 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
         .values(GroupsObj)
         .reduce((previous, current) => (previous || []).length + current.length);
       console.log(`Number of students: ${totalStudents}`);
-      for (const [field, group] of Object.entries(GroupsObj)) {
+      for (const [field, group] of Object.entries(Groups)) {
         const studentNames = group.map((student) => student.firstname).join(', ');
         console.log(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
       }
