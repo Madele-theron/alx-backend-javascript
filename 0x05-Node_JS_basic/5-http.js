@@ -1,49 +1,59 @@
 const http = require('http');
-const { readFile } = require('fs');
+const fs = require('fs');
 
-const hostname = '127.0.0.1';
-const port = 1245;
+const PORT = 1245;
+const HOST = 'localhost';
 
-function countStudents(fileName) {
-  const students = {};
-  const fields = {};
-  let length = 0;
-  return new Promise((resolve, reject) => {
-    readFile(fileName, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        let output = '';
-        const lines = data.toString().split('\n');
-        for (let i = 0; i < lines.length; i += 1) {
-          if (lines[i]) {
-            length += 1;
-            const field = lines[i].toString().split(',');
-            if (Object.prototype.hasOwnProperty.call(students, field[3])) {
-              students[field[3]].push(field[0]);
-            } else {
-              students[field[3]] = [field[0]];
-            }
-            if (Object.prototype.hasOwnProperty.call(fields, field[3])) {
-              fields[field[3]] += 1;
-            } else {
-              fields[field[3]] = 1;
-            }
+const countStudents = (fileName) => new Promise((resolve, reject) => {
+  if (!fileName) {
+    reject(new Error('Cannot load the database'));
+  }
+  if (fileName) {
+    fs.readFile(fileName, (error, data) => {
+      if (error) {
+        reject(new Error('Cannot load the database'));
+      }
+      if (data) {
+        const reportParts = [];
+        const fileLines = data.toString().split('\n');
+        const FieldNames = fileLines[0].split(',');
+        const Groups = {};
+        const PropNames = FieldNames.slice(
+          0,
+          FieldNames.length - 1,
+        );
+        for (const line of fileLines.slice(1)) {
+          const Record = line.split(',');
+          const studentPropValues = Record.slice(
+            0,
+            Record.length - 1,
+          );
+          const field = Record[Record.length - 1];
+          if (!Object.keys(Groups).includes(field)) {
+            Groups[field] = [];
           }
+          const studentEntries = PropNames.map((propName, i) => [
+            propName,
+            studentPropValues[i],
+          ]);
+          Groups[field].push(Object.fromEntries(studentEntries));
         }
-        const l = length - 1;
-        output += `Number of students: ${l}\n`;
-        for (const [key, value] of Object.entries(fields)) {
-          if (key !== 'field') {
-            output += `Number of students in ${key}: ${value}. `;
-            output += `List: ${students[key].join(', ')}\n`;
-          }
+        const totalStudents = Object.values(Groups).reduce(
+          (previous, current) => (previous || []).length + current.length,
+        );
+        reportParts.push(`Number of students: ${totalStudents}`);
+        for (const [field, group] of Object.entries(Groups)) {
+          reportParts.push([
+            `Number of students in ${field}: ${group.length}.`,
+            'List:',
+            group.map((student) => student.firstname).join(', '),
+          ].join(' '));
         }
-        resolve(output);
+        resolve(reportParts.join('\n'));
       }
     });
-  });
-}
+  }
+});
 
 const app = http.createServer((request, response) => {
   response.statusCode = 200;
@@ -64,7 +74,7 @@ const app = http.createServer((request, response) => {
   }
 });
 
-app.listen(port, hostname, () => {
+app.listen(PORT, HOST, () => {
 });
 
 module.exports = app;
