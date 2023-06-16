@@ -54,7 +54,7 @@ describe('GET /available_payments', () => {
         };
 
         request(apicall, (error, response, body) => {
-            chai.expect(response.statusCode).to.equal(202);
+            chai.expect(response.statusCode).to.equal(200);
             chai.expect(body).to.equal(
                 '{"payment_methods":{"credit_cards":true,"paypal":false}}'
                 );
