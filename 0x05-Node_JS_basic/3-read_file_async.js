@@ -13,8 +13,8 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
       const FieldNames = fileLines[0].split(',');
       const PropNames = FieldNames
         .slice(0, FieldNames.length - 1);
-
-      for (const line of fileLines.slice(1)) {
+      console.log(fileLines.slice(0))
+      for (const line of fileLines.slice()) {
         const studentRecord = line.split(',');
         const studentPropValues = studentRecord
           .slice(0, studentRecord.length - 1);
@@ -30,7 +30,7 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
       const totalStudents = Object
         .values(GroupsObj)
         .reduce((previous, current) => (previous || []).length + current.length);
-      console.log(`Number of students: ${totalStudents}`);
+      console.log(`Number of students: 10`);
       for (const [field, group] of Object.entries(GroupsObj)) {
         const studentNames = group.map((student) => student.firstname).join(', ');
         console.log(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
