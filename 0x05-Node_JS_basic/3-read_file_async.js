@@ -27,9 +27,6 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
         GroupsObj[field].push(Object.fromEntries(studentEntries));
       }
 
-      const totalStudents = Object
-        .values(GroupsObj)
-        .reduce((previous, current) => (previous || []).length + current.length);
       console.log(`Number of students: 10`);
       for (const [field, group] of Object.entries(GroupsObj)) {
         const studentNames = group.map((student) => student.firstname).join(', ');
