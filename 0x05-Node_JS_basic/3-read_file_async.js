@@ -24,7 +24,7 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
         }
         const studentEntries = PropNames
           .map((propName, idx) => [propName, studentPropValues[idx]]);
-          GroupsObj[field].push(Object.fromEntries(studentEntries));
+        GroupsObj[field].push(Object.fromEntries(studentEntries));
       }
 
       const totalStudents = Object
@@ -35,7 +35,7 @@ const countStudents = (fileName) => new Promise((resolve, reject) => {
         const studentNames = group.map((student) => student.firstname).join(', ');
         console.log(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
       }
-      resolve(data);
+      resolve(true);
     }
   });
 });
