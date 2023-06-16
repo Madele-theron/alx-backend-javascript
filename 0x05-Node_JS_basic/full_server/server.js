@@ -1,11 +1,12 @@
 const express = require('express');
-const routes = require('./routes/index');
+const controllingRouter = require('./routes/index.js');
 const app = express();
 const PORT = 1245;
 
-app.use('/', routes);
-app.use('/students', routes);
-app.use('/students/:major', routes);
+app.use('/', controllingRouter);
+app.use('/students', controllingRouter);
+app.use('/students/:major', controllingRouter);
 
 app.listen(PORT);
+
 export default app;
