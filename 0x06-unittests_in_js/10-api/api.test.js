@@ -30,6 +30,8 @@ describe('GET /cart', () => {
             done();
         });
     });
+});
+
 describe('GET /cart/:isNaN', () => {
     it('endpoint: GET /cart/:isNaN', (done) => {
         const apicall = {
@@ -43,4 +45,47 @@ describe('GET /cart/:isNaN', () => {
         });
     });
 });
+
+describe('GET /available_payments', () => {
+    it('endpoint: GET /available_payments', (done) => {
+        const apicall = {
+        url: 'http://localhost:7865/available_payments',
+        method: 'GET',
+        };
+
+        request(apicall, (error, response, body) => {
+            chai.expect(response.statusCode).to.equal(202);
+            chai.expect(body).to.equal(
+                '{"payment_methods":{"credit_cards":true,"paypal":false}}'
+                );
+            done();
+        });
+    });
 });
+
+describe('POST /login', () => {
+    it('endpoint: POST /login', (done) => {
+        const apicall = {
+        url: 'http://localhost:7865/login',
+        method: 'POST',
+        json: true, 
+        body: {
+            userName: "MADELE"
+        },
+        };
+
+        request.post(apicall, (error, response, body) => {
+            chai.expect(response.statusCode).to.equal(200);
+            chai.expect(body).to.equal('Welcome MADELE');
+            done();
+        });
+    });
+});
+
+
+
+
+
+
+
+
