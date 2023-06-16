@@ -43,5 +43,4 @@ describe('GET /cart/:isNaN', () => {
         });
     });
 });
-    });
 });
