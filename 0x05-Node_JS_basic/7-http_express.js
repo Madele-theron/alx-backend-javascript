@@ -70,3 +70,5 @@ app.get('/students', (request, response) => {
 
 app.listen(PORT, () => {
 });
+
+module.exports = app;
